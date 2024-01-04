@@ -10,6 +10,7 @@ from .models import Note
 from rest_framework.authtoken.models import Token
 from .serializers import NoteSerializer
 from django.contrib.auth.models import User
+from rest_framework.throttling import UserRateThrottle
 
 #signing up because we're gonna need so many users, hehe
 #although we can add email and everything too and we could verify the email as well but for that i would need the google api keys and i don't have those :O
@@ -47,6 +48,8 @@ def login_view(request):
 #check the auth by the header and then let's add the note to our postgres
 @permission_classes([permissions.IsAuthenticated])
 class NoteListCreateView(generics.ListCreateAPIView):
+    #added 5 request(s) per minute for users :D
+    throttle_classes = [UserRateThrottle]
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
 
