@@ -1,5 +1,14 @@
 # Speer-Backend-Assignment
 
+## If you have DOCKER installed
+
+```bash
+# Just run the following command
+docker-compose up --build
+```
+
+#### If you want to run the program using shell scripting just run the .sh file for MacOS and Linux and for windows, run the .bat file
+
 ### Setting up Virtual Environment
 
 ```bash
